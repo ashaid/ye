@@ -8,6 +8,8 @@ const { JSDOM } = jsdom;
 
 let url = new URL("https://polititweet.org/tweets");
 
+let total = 0;
+
 for (let i = 1; i <= 113; i++) {
   url.search = new URLSearchParams({
     page: i,
@@ -40,12 +42,12 @@ for (let i = 1; i <= 113; i++) {
     j++;
   });
 }
+console.log(total);
 
 function checkTweet(str) {
-  // console.log(str);
   if (!onlySpaces(str) && !retweet(str)) {
     console.log(str);
-  } else {
+    total++;
   }
 }
 
